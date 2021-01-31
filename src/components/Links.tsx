@@ -39,7 +39,7 @@ const Platform = styled.span`
   margin-left: 16px;
 `;
 
-const IconTextWrapper = styled.a`
+const IconTextWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
