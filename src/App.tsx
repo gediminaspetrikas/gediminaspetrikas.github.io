@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import CookieConsent from "react-cookie-consent";
+import CookieConsent, { getCookieConsentValue } from "react-cookie-consent";
 
 import { Links } from "./components/Links";
 import { Footer } from "./components/Footer";
@@ -8,17 +8,23 @@ import { Blur } from "./components/BackgroundBlur";
 
 import HeaderImageSource from "./static/tiesosnera.jpg";
 
+declare global {
+  interface Window {
+    fbq: any;
+  }
+}
+
 const Wrapper = styled.div`
   padding: 16px;
 `;
 
 const Container = styled.div`
   margin-top: 16px;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 500px;
 `;
 const Section = styled.div`
-  /* border-style: dashed;
-  border-color: gray; */
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   background-color: white;
@@ -35,7 +41,7 @@ const Logo = styled.img`
 const Description = styled.div`
   display: grid;
   padding: 16px;
-  background: #f5f4fc;
+  background: #f8f7fc;
 `;
 const Title = styled.span`
   font-size: 32px;
@@ -45,27 +51,39 @@ const BandName = styled.span`
   font-size: 26px;
 `;
 
-export const App = () => (
-  <div>
-    <Wrapper>
-      <Container>
-        <Blur imageSource={HeaderImageSource}></Blur>
-        <Section>
-          <Logo src={HeaderImageSource}></Logo>
-          <Description>
-            <Title>Tiesos Nėra</Title>
-            <BandName>Shaltinis</BandName>
-          </Description>
-          <Links></Links>
-          <Footer></Footer>
-        </Section>
-      </Container>
-      <CookieConsent
-        style={{ background: "#272640" }}
-        buttonStyle={{ color: "#272640", fontSize: "22px" }}
-      >
-        This website uses cookies to enhance the user experience.
-      </CookieConsent>
-    </Wrapper>
-  </div>
-);
+//TODO: use effect to enable/disable facebook tracker
+export const App = () => {
+  useEffect(() => {
+    if (getCookieConsentValue()) {
+      // ???
+      window.fbq("consent", "grant");
+    }
+  }, []);
+  return (
+    <div>
+      <Wrapper>
+        <Container>
+          <Blur imageSource={HeaderImageSource}></Blur>
+          <Section>
+            <Logo src={HeaderImageSource}></Logo>
+            <Description>
+              <Title>Tiesos Nėra</Title>
+              <BandName>Shaltinis</BandName>
+            </Description>
+            <Links></Links>
+            <Footer></Footer>
+          </Section>
+        </Container>
+        <CookieConsent
+          onAccept={() => {
+            window.fbq("consent", "grant");
+          }}
+          style={{ background: "#272640" }}
+          buttonStyle={{ color: "#272640", fontSize: "22px" }}
+        >
+          This website uses cookies to enhance the user experience.
+        </CookieConsent>
+      </Wrapper>
+    </div>
+  );
+};

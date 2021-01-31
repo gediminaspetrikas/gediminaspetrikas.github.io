@@ -46,19 +46,9 @@ const IconTextWrapper = styled.div`
 `;
 
 const Icon = styled.div`
-  // todo: use as link bg
   margin-right: 16px;
 `;
 const Button = styled.button`
-  /* width: 80px;
-  height: 36px;
-  text-align: center;
-  font-size: 14px;
-  color: white;
-  background: red;
-  border-radius: 3px;
-  margin: 0 1em;
-  padding: 0.25em 1em; */
   color: #3e1f47;
   font-size: 16px;
   padding: 4px 16px;
@@ -66,10 +56,17 @@ const Button = styled.button`
   border-radius: 3px;
 `;
 
+const trackAndRedirect: Function = (url: string) => (event: Event) => {
+  event.preventDefault();
+  console.log("click");
+  window.fbq("track", "Lead");
+  //   window.location.href = url;
+};
+
 export const Links = () => {
   return (
     <LinksWrapper>
-      <Link href={LINKS.SPOTIFY} rel="noopener">
+      <Link href="#" onClick={trackAndRedirect(LINKS.SPOTIFY)} rel="noopener">
         <IconTextWrapper>
           <Icon>
             <FontAwesomeIcon icon={faSpotify} size="2x" fixedWidth />
@@ -78,7 +75,7 @@ export const Links = () => {
         </IconTextWrapper>
         <Button>Play</Button>
       </Link>
-      <Link href={LINKS.YOUTUBE} rel="noopener">
+      <Link href="#" onClick={trackAndRedirect(LINKS.YOUTUBE)} rel="noopener">
         <IconTextWrapper>
           <Icon>
             <FontAwesomeIcon icon={faYoutube} size="2x" fixedWidth />
@@ -87,7 +84,11 @@ export const Links = () => {
         </IconTextWrapper>
         <Button>Play</Button>
       </Link>
-      <Link href={LINKS.SOUNDCLOUD} rel="noopener">
+      <Link
+        href="#"
+        onClick={trackAndRedirect(LINKS.SOUNDCLOUD)}
+        rel="noopener"
+      >
         <IconTextWrapper>
           <Icon>
             <FontAwesomeIcon icon={faSoundcloud} size="2x" fixedWidth />
