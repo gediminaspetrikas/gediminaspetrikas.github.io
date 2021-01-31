@@ -58,9 +58,8 @@ const Button = styled.button`
 
 const trackAndRedirect: Function = (url: string) => (event: Event) => {
   event.preventDefault();
-  console.log("click");
   window.fbq("track", "Lead");
-  //   window.location.href = url;
+  window.location.href = url;
 };
 
 export const Links = () => {
