@@ -4,6 +4,7 @@ import {
   faYoutube,
   faSpotify,
   faSoundcloud,
+  faBandcamp,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -71,6 +72,15 @@ export const Links = () => {
             <FontAwesomeIcon icon={faSpotify} size="2x" fixedWidth />
           </Icon>
           <Platform>Spotify</Platform>
+        </IconTextWrapper>
+        <Button>Play</Button>
+      </Link>
+      <Link href="#" onClick={trackAndRedirect(LINKS.BANDCAMP)} rel="noopener">
+        <IconTextWrapper>
+          <Icon>
+            <FontAwesomeIcon icon={faBandcamp} size="2x" fixedWidth />
+          </Icon>
+          <Platform>Bandcamp</Platform>
         </IconTextWrapper>
         <Button>Play</Button>
       </Link>
