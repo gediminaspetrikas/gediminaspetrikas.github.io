@@ -9,7 +9,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { STREAMING } from "../links.json";
-const LINKS = STREAMING.TIESOS_NERA;
+const LINKS = STREAMING.LAIME;
 
 const LinksWrapper = styled.div`
   background-color: white;
@@ -84,7 +84,7 @@ export const Links = () => {
         </IconTextWrapper>
         <Button>Play</Button>
       </Link>
-      <Link href="#" onClick={trackAndRedirect(LINKS.YOUTUBE)} rel="noopener">
+      {/* <Link href="#" onClick={trackAndRedirect(LINKS.YOUTUBE)} rel="noopener">
         <IconTextWrapper>
           <Icon>
             <FontAwesomeIcon icon={faYoutube} size="2x" fixedWidth />
@@ -92,7 +92,7 @@ export const Links = () => {
           <Platform>Youtube</Platform>
         </IconTextWrapper>
         <Button>Play</Button>
-      </Link>
+      </Link> */}
       <Link
         href="#"
         onClick={trackAndRedirect(LINKS.SOUNDCLOUD)}

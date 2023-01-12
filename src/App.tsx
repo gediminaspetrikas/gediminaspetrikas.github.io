@@ -6,7 +6,7 @@ import { Links } from "./components/Links";
 import { Footer } from "./components/Footer";
 import { Blur } from "./components/BackgroundBlur";
 
-import HeaderImageSource from "./static/tiesosnera.jpg";
+import HeaderImageSource from "./static/laime_sq.jpg";
 
 declare global {
   interface Window {
@@ -67,7 +67,7 @@ export const App = () => {
           <Section>
             <Logo src={HeaderImageSource}></Logo>
             <Description>
-              <Title>Tiesos Nėra</Title>
+              <Title>Laimė</Title>
               <BandName>Shaltinis</BandName>
             </Description>
             <Links></Links>
